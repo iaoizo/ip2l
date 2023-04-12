@@ -1,4 +1,4 @@
-package ip2l
+package ip2lo
 
 import (
 	"encoding/csv"
@@ -24,12 +24,10 @@ type CountryInfoRecord struct {
 	Cctld                string
 }
 
-
 type CI struct {
 	resultsArr []CountryInfoRecord
 	resultsMap map[string]CountryInfoRecord
 }
-
 
 func OpenCountryInfo(csvFile string) (*CI, error) {
 	var ci = &CI{}
@@ -105,7 +103,6 @@ func OpenCountryInfo(csvFile string) (*CI, error) {
 	}
 	return ci, nil
 }
-
 
 func (c *CI) GetCountryInfo(countryCode ...string) ([]CountryInfoRecord, error) {
 	if len(c.resultsArr) == 0 {

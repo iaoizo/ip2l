@@ -1,4 +1,4 @@
-package ip2l
+package ip2lo
 
 import (
 	"encoding/json"
@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"strconv"
 )
-
 
 type IP2LocationResult struct {
 	Response           string  `json:"response"`

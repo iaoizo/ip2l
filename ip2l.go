@@ -1,4 +1,4 @@
-package ip2l
+package ip2lo
 
 import (
 	"fmt"

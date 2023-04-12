@@ -1,4 +1,4 @@
-package ip2l
+package ip2lo
 
 import (
 	"encoding/hex"
@@ -12,7 +12,6 @@ import (
 	"strconv"
 	"strings"
 )
-
 
 type IPTools struct {
 	max_ipv4_range *big.Int
@@ -43,7 +42,6 @@ func (t *IPTools) IsIPv4(IP string) bool {
 	return true
 }
 
-
 func (t *IPTools) IsIPv6(IP string) bool {
 	if t.IsIPv4(IP) {
 		return false
@@ -64,7 +62,6 @@ func (t *IPTools) IsIPv6(IP string) bool {
 	return true
 }
 
-
 func (t *IPTools) IPv4ToDecimal(IP string) (*big.Int, error) {
 	if !t.IsIPv4(IP) {
 		return nil, errors.New("Not a valid IPv4 address.")
@@ -83,7 +80,6 @@ func (t *IPTools) IPv4ToDecimal(IP string) (*big.Int, error) {
 
 	return ipnum, nil
 }
-
 
 func (t *IPTools) IPv6ToDecimal(IP string) (*big.Int, error) {
 	if !t.IsIPv6(IP) {
@@ -104,7 +100,6 @@ func (t *IPTools) IPv6ToDecimal(IP string) (*big.Int, error) {
 	return ipnum, nil
 }
 
-
 func (t *IPTools) DecimalToIPv4(IPNum *big.Int) (string, error) {
 	if IPNum.Cmp(big.NewInt(0)) < 0 || IPNum.Cmp(t.max_ipv4_range) > 0 {
 		return "", errors.New("Invalid IP number.")
@@ -117,7 +112,6 @@ func (t *IPTools) DecimalToIPv4(IPNum *big.Int) (string, error) {
 	return ip.String(), nil
 }
 
-
 func (t *IPTools) DecimalToIPv6(IPNum *big.Int) (string, error) {
 	if IPNum.Cmp(big.NewInt(0)) < 0 || IPNum.Cmp(t.max_ipv6_range) > 0 {
 		return "", errors.New("Invalid IP number.")
@@ -129,7 +123,6 @@ func (t *IPTools) DecimalToIPv6(IPNum *big.Int) (string, error) {
 	ip := net.IP(bytes)
 	return ip.String(), nil
 }
-
 
 func (t *IPTools) CompressIPv6(IP string) (string, error) {
 	if !t.IsIPv6(IP) {
@@ -145,7 +138,6 @@ func (t *IPTools) CompressIPv6(IP string) (string, error) {
 	return ipaddr.String(), nil
 }
 
-
 func (t *IPTools) ExpandIPv6(IP string) (string, error) {
 	if !t.IsIPv6(IP) {
 		return "", errors.New("Not a valid IPv6 address.")
@@ -160,7 +152,6 @@ func (t *IPTools) ExpandIPv6(IP string) (string, error) {
 
 	return ipstr, nil
 }
-
 
 func (t *IPTools) IPv4ToCIDR(IPFrom string, IPTo string) ([]string, error) {
 	if !t.IsIPv4(IPFrom) || !t.IsIPv4(IPTo) {
@@ -208,7 +199,6 @@ func (t *IPTools) IPv4ToCIDR(IPFrom string, IPTo string) ([]string, error) {
 	return result, nil
 }
 
-
 func (t *IPTools) ipToBinary(ip string) (string, error) {
 	if !t.IsIPv6(ip) {
 		return "", errors.New("Not a valid IPv6 address.")
@@ -223,7 +213,6 @@ func (t *IPTools) ipToBinary(ip string) (string, error) {
 
 	return binstr, nil
 }
-
 
 func (t *IPTools) binaryToIP(binstr string) (string, error) {
 	re := regexp.MustCompile(`^[01]{128}$`)
@@ -247,7 +236,6 @@ func (t *IPTools) binaryToIP(binstr string) (string, error) {
 	return ipaddr.String(), nil
 }
 
-
 func (t *IPTools) minMax(array []int) (int, int) {
 	var max int = array[0]
 	var min int = array[0]
@@ -261,7 +249,6 @@ func (t *IPTools) minMax(array []int) (int, int) {
 	}
 	return min, max
 }
-
 
 func (t *IPTools) IPv6ToCIDR(IPFrom string, IPTo string) ([]string, error) {
 	if !t.IsIPv6(IPFrom) || !t.IsIPv6(IPTo) {
