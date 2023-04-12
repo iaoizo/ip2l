@@ -5,7 +5,7 @@ ip2location
 
 # Install
 ```
-go get  github.com/iaoizo/ip2lo@v1.0.0
+go get  github.com/iaoizo/ip2lo@v1.0.1
 ```
 
 # Usage
