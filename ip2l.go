@@ -1,10 +1,7 @@
 package ip2lo
 
-import (
-	"fmt"
-)
 
-const DEFAULT_FILE = "IPV6-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ISP.BIN"
+const DEFAULT_FILE = "IPV6-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ISP.BIN111"
 
 type Ip2L struct {
 	db     *DB
@@ -26,11 +23,6 @@ func init() {
 	ip2LObj = &Ip2L{
 		dbFile: DEFAULT_FILE,
 	}
-	db, err := ip2LObj.openDb()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	ip2LObj.setDb(db)
 }
 
 // 获取解析实例
@@ -47,7 +39,6 @@ func (i *Ip2L) LoadDbFile(dbF string) error {
 		i.dbFile = oldFile
 		return err
 	}
-	i.Close()
 	i.setDb(db)
 	return nil
 }
